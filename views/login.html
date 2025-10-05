@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essenza - Login</title>
+    <link rel="stylesheet" href="/css/style.css"> 
+</head>
+<body class="login-page"> 
+    <div class="login-container">
+        <img src="/img/Essenza logo.jpg" alt="Essenza Logo" class="logo">
+        <h2>Acceso al Dashboard</h2>
+        
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Iniciar Sesión</button>
+        </form>
+        <p class="test-info">Usuario de prueba: admin | Contraseña: 123456</p>
+    </div>
+</body>
+</html>

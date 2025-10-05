@@ -1,0 +1,5 @@
+# Excluir la carpeta de dependencias
+node_modules/
+
+# Excluir el archivo de variables de entorno (con credenciales sensibles)
+.env

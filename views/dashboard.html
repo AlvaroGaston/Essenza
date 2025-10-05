@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essenza - Dashboard de Base de Datos Aplicadas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-header">Essenza Dashboard</div>
+        <nav>
+            <a href="/" style="color: white; text-decoration: none;">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Dashboard de Bases de Datos Aplicadas</h1>
+
+        <div class="grid-container">
+
+            <div class="card">
+                <h3>Clientes (Entidad 1)</h3>
+                <p>Indicador Visual del estado del cliente (semaforización):</p>
+                <div class="indicator status-activo">
+                    Clientes ACTIVO
+                </div>
+                <div class="indicator status-inactivo">
+                    Clientes INACTIVO
+                </div>
+                <div class="indicator status-pendiente">
+                    Clientes PENDIENTE (Tercer estado)
+                </div>
+                <p class="indicator-ref">Referencia: Verde=Activo, Rojo=Inactivo, Naranja=Pendiente.</p>
+            </div>
+
+            <div class="card">
+                <h3>Ventas Mensuales</h3>
+                <p>Monto total y cumplimiento de la meta (ejemplo de indicador por índice):</p>
+                <p>Ventas de Septiembre: $15,000</p>
+                <div class="indicator status-activo" style="margin-top: 10px;">
+                    ¡Meta Superada! (Índice de Ventas en Verde)
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Top 3 Perfumes</h3>
+                <p>Muestra el resumen de la Entidad **Perfumes**.</p>
+                <ol style="padding-left: 20px;">
+                    <li>Gold Intense</li>
+                    <li>Aura Floral</li>
+                    <li>Deep Musk</li>
+                </ol>
+            </div>
+
+            <div class="card drill-down-area">
+                <h3>Drill-Down / Drill-Up (3 Niveles Requeridos)</h3>
+                <p>Funcionalidad de exploración jerárquica: Marcas → Perfumes → Formato.</p>
+                
+                <div class="drill-nav">
+                    <button>Nivel 1: Marcas</button>
+                    <button>Nivel 2: Perfumes</button>
+                    <button>Nivel 3: Formato</button>
+                </div>
+                
+                <div class="drill-level">
+                    **Nivel 1:** Ventas por **MARCA**. (Drill-Up)
+                </div>
+                <div class="drill-level">
+                    **Nivel 2:** Ventas de **PERFUME** de la Marca Seleccionada.
+                </div>
+                <div class="drill-level">
+                    **Nivel 3:** Ventas por **FORMATO** del Perfume Seleccionado. (Detalle)
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
