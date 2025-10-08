@@ -1,21 +1,21 @@
--- 1. CREACI�N Y USO DE LA BASE DE DATOS
+-- 1. CREACION Y USO DE LA BASE DE DATOS
 CREATE DATABASE EssenzaDB;
 GO
 USE EssenzaDB;
 GO
--- 2. CREACI�N DE TABLAS (CAN�NICO DE LA BD)
+-- 2. CREACI0N DE TABLAS (CAN0NICO DE LA BD)
 -- Tabla de Usuarios (Requisito de Login)
 CREATE TABLE Usuarios (
     id_usuario INT PRIMARY KEY IDENTITY(1,1),
     nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(100) NOT NULL, -- Contrase�a protegida mediante Base64 (MTIzNDU2 = 123456)
+    password_hash VARCHAR(100) NOT NULL, -- Contrase0a protegida mediante Base64 (MTIzNDU2 = 123456)
     rol VARCHAR(20) NOT NULL
 );
 -- Entidad 1: Marcas (Base para Drill-Down/Up Nivel 1)
 CREATE TABLE Marcas (
     id_marca INT PRIMARY KEY IDENTITY(1,1),
     nombre_marca VARCHAR(100) NOT NULL UNIQUE,
-    tipo VARCHAR(50) -- 'DISE�ADOR' o 'ARABES'
+    tipo VARCHAR(50) -- 'DISE0ADOR' o 'ARABES'
 );
 -- Entidad 2: Perfumes (Productos) (Base para Drill-Down/Up Nivel 2)
 CREATE TABLE Perfumes (
@@ -37,7 +37,7 @@ CREATE TABLE Perfume_Precio (
     precio DECIMAL(10, 2) NOT NULL,
     CONSTRAINT UQ_Perfume_Formato UNIQUE (id_perfume, id_formato)
 );
--- Entidad 3: Clientes (Para Indicador Visual - Semaforizaci�n)
+-- Entidad 3: Clientes (Para Indicador Visual - Semaforizaci0n)
 CREATE TABLE Clientes (
     id_cliente INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(100) NOT NULL,
@@ -56,15 +56,15 @@ CREATE TABLE Ventas (
 CREATE TABLE DetalleVenta (
     id_detalle INT PRIMARY KEY IDENTITY(1,1),
     id_venta INT FOREIGN KEY REFERENCES Ventas(id_venta),
-    id_perfume_precio INT FOREIGN KEY REFERENCES Perfume_Precio(id_perfume_precio), -- Apunta a la combinaci�n Perfume+Formato
+    id_perfume_precio INT FOREIGN KEY REFERENCES Perfume_Precio(id_perfume_precio), -- Apunta a la combinaci0n Perfume+Formato
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10, 2) NOT NULL
 );
--- 3. INSERTS DE DATOS INICIALES Y CAT�LOGO
+-- 3. INSERTS DE DATOS INICIALES Y CAT0LOGO
 -- USUARIO DE PRUEBA (LOGIN)
 INSERT INTO Usuarios (nombre_usuario, password_hash, rol) VALUES
 ('admin', 'MTIzNDU2', 'Administrador');
--- CLIENTES DE PRUEBA (SEMAFORIZACI�N)
+-- CLIENTES DE PRUEBA (SEMAFORIZACI0N)
 INSERT INTO Clientes (nombre, apellido, email, estado) VALUES
 ('Mauricio', 'Garcia', 'm.garcia@test.com', 'ACTIVO'),
 ('Cristian', 'Medin', 'c.medin@test.com', 'INACTIVO'),
@@ -72,11 +72,11 @@ INSERT INTO Clientes (nombre, apellido, email, estado) VALUES
 -- FORMATOS DISPONIBLES
 INSERT INTO Formatos (ml) VALUES
 (39), (50), (60), (75), (90), (100), (105), (120), (200);
--- MARCAS (DISE�ADOR Y ARABES)
+-- MARCAS (DISE0ADOR Y ARABES)
 INSERT INTO Marcas (nombre_marca, tipo) VALUES
-('DIOR', 'DISE�ADOR'),
-('CAROLINA HERRERA', 'DISE�ADOR'),
-('YVES SAINT LAURENT', 'DISE�ADOR'),
+('DIOR', 'DISE0ADOR'),
+('CAROLINA HERRERA', 'DISE0ADOR'),
+('YVES SAINT LAURENT', 'DISE0ADOR'),
 ('FRENCH', 'ARABES'),
 ('BHARARA', 'ARABES'),
 ('ARMAF', 'ARABES'),
@@ -110,7 +110,7 @@ INSERT INTO Perfumes (id_marca, nombre_perfume, nombre_completo) VALUES
 -- Perfume con comilla simple (escapada con doble comilla '')
 ((SELECT id_marca FROM Marcas WHERE nombre_marca = 'YVES SAINT LAURENT'), 'Y L'' ELIXIR', 'YVES SAINT LAURENT Y L'' ELIXIR'),
 ((SELECT id_marca FROM Marcas WHERE nombre_marca = 'YVES SAINT LAURENT'), 'MYSLF LE PARFUM', 'YVES SAINT LAURENT MYSLF LE PARFUM');
--- PRECIOS POR PERFUME Y FORMATO (Relaci�n de Nivel 3)
+-- PRECIOS POR PERFUME Y FORMATO (Relaci0n de Nivel 3)
 INSERT INTO Perfume_Precio (id_perfume, id_formato, precio)
 VALUES
 -- DIOR SAUVAGE EDT
